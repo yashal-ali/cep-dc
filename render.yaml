@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: cgpa
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:application
+    runtime: python
+    plan: free
