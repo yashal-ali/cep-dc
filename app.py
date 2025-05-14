@@ -9,8 +9,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Configure Celery with Redis broker
-app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'  # Update if Redis is remote
-app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
+app.config['CELERY_BROKER_URL'] ="redis://default:yg96GR961NC2sUegowuHtPQx01zKldbs@redis-11193.c16.us-east-1-2.ec2.redns.redis-cloud.com:11193"  
+app.config['CELERY_RESULT_BACKEND'] = "redis://default:yg96GR961NC2sUegowuHtPQx01zKldbs@redis-11193.c16.us-east-1-2.ec2.redns.redis-cloud.com:11193"  
 
 celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 celery.conf.update(app.config)

@@ -1,8 +1,14 @@
 services:
   - type: web
-    name: cgpa
+    name: cgpa-predictor-web
     env: python
-    buildCommand: ""
-    startCommand: gunicorn app:application
-    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+  - type: worker
+    name: cgpa-predictor-worker
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: celery -A app.celery worker --loglevel=info
+  - type: redis
+    name: cgpa-predictor-redis
     plan: free
